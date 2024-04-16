@@ -26,3 +26,5 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::get('/home', [\App\Http\Controllers\HomeController::class, "redirect"])->name('home.redirect');
