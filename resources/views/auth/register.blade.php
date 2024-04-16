@@ -20,6 +20,17 @@
             </div>
 
             <div class="mt-4">
+                <x-label for="phone" value="{{ __('Phone') }}" />
+                <x-input id="phone" class="block mt-1 w-full" type="tel" pattern="[0-9]{3}-[0-9]{4}-[0-9]{3}" name="phone" :value="old('phone')" required autocomplete="phone" />
+                <span class="text-sm">Format: 012-3456-789</span>
+            </div>
+
+            <div class="mt-4">
+                <x-label for="address" value="{{ __('Address') }}" />
+                <x-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')" required autocomplete="address" />
+            </div>
+
+            <div class="mt-4">
                 <x-label for="password" value="{{ __('Password') }}" />
                 <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
             </div>
