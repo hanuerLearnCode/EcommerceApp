@@ -13,7 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+// welcome page
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
+Route::get('/welcome', function () {
     return view('welcome');
 });
 
@@ -23,8 +25,8 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return view('home.index');
     })->name('dashboard');
 });
 
-Route::get('/home', [\App\Http\Controllers\HomeController::class, "redirect"])->name('home.redirect');
+Route::get('/redirect', [\App\Http\Controllers\HomeController::class, "redirect"])->name('home.redirect');
