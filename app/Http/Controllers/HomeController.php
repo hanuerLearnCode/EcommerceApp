@@ -19,7 +19,7 @@ class HomeController extends Controller
     public function redirect()
     {
         if (!Auth::user()) {
-            return view('home.index');
+            return route('login');
         }
         $usertype = Auth::user()->usertype;
 
