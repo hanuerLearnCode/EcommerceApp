@@ -60,7 +60,7 @@
             <span class="nav-link">Navigation</span>
         </li>
         <li class="nav-item menu-items">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="{{route('home.redirect')}}">
               <span class="menu-icon">
                 <i class="mdi mdi-speedometer"></i>
               </span>
@@ -68,38 +68,27 @@
             </a>
         </li>
         <li class="nav-item menu-items">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
-               aria-controls="ui-basic">
+            <a class="nav-link" href="{{route('products.index')}}">
               <span class="menu-icon">
                 <i class="mdi mdi-laptop"></i>
               </span>
-                <span class="menu-title">Basic UI Elements</span>
-                <i class="menu-arrow"></i>
+                <span class="menu-title">Products</span>
             </a>
-            <div class="collapse" id="ui-basic">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="admin/pages/ui-features/buttons.html">Buttons</a></li>
-                    <li class="nav-item"><a class="nav-link" href="admin/pages/ui-features/dropdowns.html">Dropdowns</a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="admin/pages/ui-features/typography.html">Typography</a>
-                    </li>
-                </ul>
-            </div>
         </li>
         <li class="nav-item menu-items">
             <a class="nav-link" href="{{route('categories.index')}}">
               <span class="menu-icon">
                 <i class="mdi mdi-playlist-play"></i>
               </span>
-                <span class="menu-title">Category</span>
+                <span class="menu-title">Categories</span>
             </a>
         </li>
         <li class="nav-item menu-items">
-            <a class="nav-link" href="admin/pages/tables/basic-table.html">
+            <a class="nav-link" href="{{route('sales.index')}}">
               <span class="menu-icon">
                 <i class="mdi mdi-table-large"></i>
               </span>
-                <span class="menu-title">Tables</span>
+                <span class="menu-title">Sales</span>
             </a>
         </li>
         <li class="nav-item menu-items">
@@ -133,7 +122,8 @@
                     <li class="nav-item"><a class="nav-link" href="admin/pages/samples/error-404.html"> 404 </a></li>
                     <li class="nav-item"><a class="nav-link" href="admin/pages/samples/error-500.html"> 500 </a></li>
                     <li class="nav-item"><a class="nav-link" href="admin/pages/samples/login.html"> Login </a></li>
-                    <li class="nav-item"><a class="nav-link" href="admin/pages/samples/register.html"> Register </a></li>
+                    <li class="nav-item"><a class="nav-link" href="admin/pages/samples/register.html"> Register </a>
+                    </li>
                 </ul>
             </div>
         </li>
