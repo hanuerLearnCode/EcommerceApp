@@ -5,7 +5,7 @@
         <div class="content-wrapper">
             {{--            list of products--}}
             <div class="header d-inline-flex">
-                <h2 class="heading_center">products</h2>
+                <h2 class="heading_center">Products</h2>
                 <a class="ml-4 p-2 d-flex btn btn-outline-twitter justify-content-center align-items-lg-center"
                    href="{{route('products.add')}}">Add</a>
             </div>

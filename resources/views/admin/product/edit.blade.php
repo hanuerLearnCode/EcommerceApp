@@ -4,7 +4,7 @@
     <div class="main-panel">
         <div class="container mt-3">
             <h1 class="header">
-                Adding New Product
+                Updating Product
             </h1>
             @if(session('error'))
                 <div class="session mt-3">
@@ -14,7 +14,7 @@
                     </div>
                 </div>
             @endif
-            <form action="{{route('products.doAdd')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{route('products.doEdit', $product->id)}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                     <label for="title" class="form-label">Product Name</label>
@@ -58,7 +58,7 @@
                     <label for="image" class="form-label">Products Image</label>
                     <input type="file" name="image[]" id="image" class="form-control" multiple>
                 </div>
-                <button type="submit" class="btn btn-primary">Add</button>
+                <button type="submit" class="btn btn-primary">Save</button>
             </form>
         </div>
     </div>
