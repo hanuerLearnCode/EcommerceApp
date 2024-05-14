@@ -36,6 +36,7 @@
                         <td>Quantity</td>
                         <td>Price</td>
                         <td>Sale</td>
+                        <td>Image</td>
                         <td colspan="2">Action</td>
                     </tr>
                     </thead>
@@ -56,6 +57,13 @@
                             <td>{{$product->quantity}}</td>
                             <td>{{$product->price}}</td>
                             <td>{{$product->sale_id}}</td>
+                            <td>
+                                @php
+                                    $numberOfImages = count($product->image);
+                                @endphp
+                                <img src="{{$product->image[$numberOfImages-1]['path']}}" alt=""
+                                     style="width: 50px; height: 50px">
+                            </td>
                             <td><a href="{{route('products.edit', $product->id)}}">Edit</a></td>
                             <td><a href="{{route('products.delete', $product->id)}}">Delete</a></td>
                         </tr>

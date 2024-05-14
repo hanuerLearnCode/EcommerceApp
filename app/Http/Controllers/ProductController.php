@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Sale;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use function PHPUnit\Framework\isEmpty;
 
 class ProductController extends Controller implements iCRUD
 {
@@ -84,36 +85,32 @@ class ProductController extends Controller implements iCRUD
             DB::beginTransaction();
             $data = $request->all();
             unset($data['_token']);
-
-            // get the images
-            $images = $data['image'];
-
-            // unset the img from the data
-            unset($data['image']);
-
             $product = Product::find($id);
-            $product->update($data);
-            // add image to storage and db
-            foreach ($images as $image) {
-                $imageName = time() . $image->getClientOriginalName();
-                $image->storeAs('/product', $imageName, 'public');
-                $img = new Image();
-                $img->path = '/storage/product/' . $imageName;
-                $img->imageable_id = $product->id;
-                $img->imageable_type = Product::class;
-                $img->save();
+            if (isset($data['image'])) {
+                // get the images
+                $images = $data['image'];
+                // unset the img from the data
+                unset($data['image']);
+                foreach ($images as $image) {
+                    $imageName = time() . $image->getClientOriginalName();
+                    $image->storeAs('/product', $imageName, 'public');
+                    $img = new Image();
+                    $img->path = '/storage/product/' . $imageName;
+                    $img->imageable_id = $product->id;
+                    $img->imageable_type = Product::class;
+                    $img->save();
+                }
             }
-
-            $success = "Product added";
+            $product->update($data);
+            $success = "Product updated";
             $products = Product::all();
             DB::commit();
-
         } catch (\Exception $e) {
             DB::rollBack();
             $error = $e->getMessage();
             return redirect()->back()->with('error', $error);
         }
-        return view('admin.product.index')->with([
+        return redirect('/products')->with([
             'success' => $success, 'products' => $products,
         ]);
     }
