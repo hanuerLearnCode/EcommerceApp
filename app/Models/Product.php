@@ -17,4 +17,9 @@ class Product extends Model
         'price',
         'sale_id',
     ];
+
+    public function image()
+    {
+        return $this->morphMany(Image::class, 'imageable');
+    }
 }

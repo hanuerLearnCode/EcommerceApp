@@ -19,12 +19,12 @@
                 <div class="mb-3">
                     <label for="title" class="form-label">Product Name</label>
                     <input style="color: #FFFFFF;" type="text" class="form-control" id="title" name="title"
-                           placeholder="Enter your product's name">
+                           placeholder="Enter your product's name" value="{{$product->title}}">
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
                     <textarea style="color: #FFFFFF;" class="form-control" id="description" name="description"
-                              placeholder="Enter some description"></textarea>
+                              placeholder="Enter some description" value="{{$product->description}}"></textarea>
                 </div>
                 <div class="mb-3">
                     <label for="category" class="form-label">Category</label>
@@ -38,12 +38,12 @@
                 <div class="mb-3">
                     <label class="form-label" for="quantity">Quantity</label>
                     <input type="text" name="quantity" id="quantity" class="form-control"
-                           placeholder="Enter your product's quantity">
+                           placeholder="Enter your product's quantity" value="{{$product->quantity}}">
                 </div>
                 <div class="mb-3">
                     <label for="price" class="form-label">Price</label>
                     <input type="text" name="price" id="price" class="form-control"
-                           placeholder="Enter your product's price">
+                           placeholder="Enter your product's price" value="{{$product->price}}">
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="sale">Sale (%)</label>
