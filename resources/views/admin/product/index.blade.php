@@ -37,6 +37,7 @@
                         <td>Price</td>
                         <td>Sale</td>
                         <td>Image</td>
+                        <td>View</td>
                         <td colspan="2">Action</td>
                     </tr>
                     </thead>
@@ -64,8 +65,15 @@
                                 <img src="{{$product->image[$numberOfImages-1]['path']}}" alt=""
                                      style="width: 50px; height: 50px">
                             </td>
+                            @if($product->view > 0)
+                                <td>{{$product->view -1 }}</td>
+                            @else
+                                <td>{{$product->view}}</td>
+                            @endif
+
                             <td><a href="{{route('products.edit', $product->id)}}">Edit</a></td>
-                            <td><a href="{{route('products.delete', $product->id)}}" onclick="return confirm('Are you sure deleting this item?')">Delete</a></td>
+                            <td><a href="{{route('products.delete', $product->id)}}"
+                                   onclick="return confirm('Are you sure deleting this item?')">Delete</a></td>
                         </tr>
                     @endforeach
                     </tbody>

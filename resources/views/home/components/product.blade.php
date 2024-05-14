@@ -12,7 +12,10 @@
                     <div class="box">
                         <div class="option_container">
                             <div class="options">
-                                <a href="" class="option1">
+                                <a href="{{route('product.details', $product->id)}}" class="option1">
+                                    Details
+                                </a>
+                                <a href="" class="option2">
                                     BUY NOW
                                 </a>
                             </div>
@@ -24,9 +27,18 @@
                             <h5>
                                 {{$product->title}}
                             </h5>
-                            <h6>
-                                {{$product->price}}
-                            </h6>
+                            @if($product->sale_id != null)
+                                <h6 style="text-decoration: line-through">
+                                    {{$product->price}}
+                                </h6>
+                                <h6>
+                                    {{$product->price - $product->price * (\App\Models\Sale::find($product->sale_id)->percentage / 100)}}
+                                </h6>
+                            @else
+                                <h6>
+                                    {{$product->price}}
+                                </h6>
+                            @endif
                         </div>
                     </div>
                 </div>

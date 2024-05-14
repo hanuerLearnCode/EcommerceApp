@@ -33,3 +33,4 @@ Route::middleware([
 Route::get('/redirect', [\App\Http\Controllers\HomeController::class, "redirect"])->name('home.redirect');
 
 require_once __DIR__ . '/be.php';
+require_once __DIR__ . '/fe.php';
