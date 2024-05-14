@@ -65,7 +65,7 @@
                                      style="width: 50px; height: 50px">
                             </td>
                             <td><a href="{{route('products.edit', $product->id)}}">Edit</a></td>
-                            <td><a href="{{route('products.delete', $product->id)}}">Delete</a></td>
+                            <td><a href="{{route('products.delete', $product->id)}}" onclick="return confirm('Are you sure deleting this item?')">Delete</a></td>
                         </tr>
                     @endforeach
                     </tbody>

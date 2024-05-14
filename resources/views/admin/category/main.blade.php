@@ -49,7 +49,8 @@
                             <td>{{$category->name}}</td>
                             <td>{{$category->description}}</td>
                             <td><a href="{{route('categories.edit', $category->id)}}">Edit</a></td>
-                            <td><a href="{{route('categories.delete', $category->id)}}">Delete</a></td>
+                            <td><a href="{{route('categories.delete', $category->id)}}"
+                                   onclick="return confirm('Are you sure deleting this item?')">Delete</a></td>
                         </tr>
                     @endforeach
                     </tbody>

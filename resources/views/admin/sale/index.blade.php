@@ -47,7 +47,7 @@
                             <td>{{$count}}</td>
                             <td>{{$sale->percentage}}</td>
                             <td><a href="{{route('sales.edit', $sale->id)}}">Edit</a></td>
-                            <td><a href="{{route('sales.delete', $sale->id)}}">Delete</a></td>
+                            <td><a href="{{route('sales.delete', $sale->id)}}" onclick="return confirm('Are you sure deleting this item?')">Delete</a></td>
                         </tr>
                     @endforeach
                     </tbody>
