@@ -10,5 +10,7 @@ Route::prefix('/checkout')->middleware('auth')->group(function () {
         return "checking out ...";
     })->name('buy');
 
+    Route::get('/cart', [\App\Http\Controllers\CartController::class, 'showCart'])->name('showCart');
     Route::post('/add-to-cart/{id}', [\App\Http\Controllers\CartController::class, 'addToCart'])->name('addToCart');
+    Route::get('/delete-from-cart/{id}', [\App\Http\Controllers\CartController::class, 'deleteFromCart'])->name('cart.delete');
 });

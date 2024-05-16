@@ -35,7 +35,7 @@
                         <a class="nav-link" href="">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">
+                        <a class="nav-link" href="{{route('showCart')}}">
                             <svg width="1500px" height="1500px" viewBox="5 5 15 15" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
 
