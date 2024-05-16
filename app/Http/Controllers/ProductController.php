@@ -134,7 +134,6 @@ class ProductController extends Controller implements iCRUD
     public function showProductDetails($id)
     {
         $product = Product::findOrFail($id);
-        $product->increment('view');
         $category_id = $product->category_id;
         $category = Category::find($category_id);
         $sale = Sale::find($product->sale_id);

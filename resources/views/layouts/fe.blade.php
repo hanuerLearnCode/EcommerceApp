@@ -2,7 +2,6 @@
 <html lang="">
 <head>
     <!-- Basic -->
-    {{--    <base href="/public">--}}
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <!-- Mobile Metas -->
@@ -23,40 +22,13 @@
     <link href="{{asset('home/css/responsive.css')}}" rel="stylesheet"/>
 </head>
 <body>
-<div class="header-wrapper">
-    <!-- header section strats -->
-    @include('home.components.header')
-    <!-- end header section -->
-</div>
 
-<div class="card m-auto p-2" style="width: 18rem; border: none">
-    <img src="{{$product->image[count($product->image)-1]->path}}" class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">{{$product->title}}</h5>
-        <p class="card-text">{{$product->description}}</p>
-        <p class="card-text">Category: {{$category->name}}</p>
-        <p class="card-text">Quantity: {{$product->quantity}}</p>
-        <p class="card-text">Price: {{$product->price}}</p>
-        <p class="card-text">Sale: {{$sale->percentage}}%</p>
-        <div class="button-wrapper">
-            <a href="{{route('buy')}}" class="btn btn-primary">Buy now</a>
-            <form class="m-auto" action="{{route('addToCart', $product->id)}}"
-                  method="Post">
-                @csrf
-                <div class="row m-auto">
-                    <div class="col-md-4">
-                        <input type="number" class="form-control" id="quantity" name="quantity"
-                               value="1" min="1">
-                    </div>
-                    <div class="col-md-4">
-                        <input type="submit" class="btn btn-primary" value="Add to Cart">
-                    </div>
-                </div>
-            </form>
-        </div>
+<!-- header section strats -->
+@include('home.components.header')
+<!-- end header section -->
 
-    </div>
-</div>
+
+@yield('content')
 
 <!-- footer start -->
 @include('home.components.footer')
