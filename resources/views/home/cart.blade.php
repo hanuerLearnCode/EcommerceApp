@@ -1,6 +1,12 @@
 @extends('layouts.fe')
 @section('content')
     <div class="container">
+        @if(session('success'))
+            <div class="alert alert-success" role="alert">
+                {{session('success')}}
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+            </div>
+        @endif
         <h2 class="header_section">Your Cart</h2>
         <table class="table">
             <thead class="thead-light">
@@ -34,13 +40,13 @@
                         <td>{{$cartItem['product'][0]->title}}</td>
                         <td>{{$cartItem['product'][0]->description}}</td>
                         <td>
-                        <span>
-                            <a href="">-</a>
-                        </span>
+                            <span>
+                                <a href="{{route('cart.decrease', $cartItem['product'][0]->id)}}">-</a>
+                            </span>
                             {{$cartItem['quantity']}}
                             <span>
-                            <a href="">+</a>
-                        </span>
+                                 <a href="{{route('cart.increase', $cartItem['product'][0]->id)}}">+</a>
+                            </span>
                         </td>
                         <td>{{$cartItem['product'][0]->price}}</td>
                         <td>{{$cartItem['product'][0]->price * $cartItem['quantity']}}</td>

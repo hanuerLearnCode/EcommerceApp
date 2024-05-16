@@ -26,6 +26,12 @@
     <!-- header section strats -->
     @include('home.components.header')
     <!-- end header section -->
+    @if(session('success'))
+        <div class="alert alert-success" role="alert">
+            {{session('success')}}
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+        </div>
+    @endif
     <!-- slider section -->
     @include('home.components.slider')
     <!-- end slider section -->
