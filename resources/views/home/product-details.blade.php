@@ -38,10 +38,21 @@
         <p class="card-text">Quantity: {{$product->quantity}}</p>
         <p class="card-text">Price: {{$product->price}}</p>
         <p class="card-text">Sale: {{$sale->percentage}}%</p>
-        <p class="card-text">View: {{$product->view}}</p>
-        <div class="button-wrapper d-flex justify-content-around">
-            <a href="#" class="btn btn-primary">Buy now</a>
-            <a href="#" class="btn btn-outline-secondary">Add to Cart</a>
+        <div class="button-wrapper">
+            <a href="{{route('buy')}}" class="btn btn-primary">Buy now</a>
+            <form class="m-auto" action="{{route('addToCart', $product->id)}}"
+                  method="Post">
+                @csrf
+                <div class="row m-auto">
+                    <div class="col-md-4">
+                        <input type="number" class="form-control" id="quantity" name="quantity"
+                               value="1" min="1">
+                    </div>
+                    <div class="col-md-4">
+                        <input type="submit" class="btn btn-primary" value="Add to Cart">
+                    </div>
+                </div>
+            </form>
         </div>
 
     </div>

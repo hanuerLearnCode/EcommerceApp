@@ -15,10 +15,27 @@
                                 <a href="{{route('product.details', $product->id)}}" class="option1">
                                     Details
                                 </a>
-                                <a href="" class="option2">
+                                <a href="{{route('buy')}}" class="option3 btn btn-outline-primary">
                                     BUY NOW
                                 </a>
+                                {{--                                <a href="{{route('addToCart')}}" class="option2">--}}
+                                {{--                                    Add to Cart--}}
+                                {{--                                </a>--}}
+                                <form class="m-auto" action="{{route('addToCart', $product->id)}}"
+                                      method="Post">
+                                    @csrf
+                                    <div class="row m-auto">
+                                        <div class="col-md-4">
+                                            <input type="number" class="form-control" id="quantity" name="quantity"
+                                                   value="1" min="1">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="submit" class="btn btn-primary" value="Add to Cart">
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
+
                         </div>
                         <div class="img-box">
                             <img src="{{$product->image[count($product->image) - 1]->path}}" alt="">
