@@ -60,7 +60,7 @@
                 <th scope="row" colspan="5">Total</th>
                 <td>{{$totalPrice}}</td>
                 <td>
-                    <a href="">Checkout</a>
+                    <a href="{{route('makeOrder')}}">Checkout</a>
                 </td>
             </tr>
             </tbody>

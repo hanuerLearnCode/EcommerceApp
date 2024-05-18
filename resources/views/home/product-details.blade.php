@@ -39,7 +39,7 @@
         <p class="card-text">Price: {{$product->price}}</p>
         <p class="card-text">Sale: {{$sale->percentage}}%</p>
         <div class="button-wrapper">
-            <a href="{{route('buy')}}" class="btn btn-primary">Buy now</a>
+            <a href="{{route('makeOrder')}}" class="btn btn-primary">Buy now</a>
             <form class="m-auto" action="{{route('addToCart', $product->id)}}"
                   method="Post">
                 @csrf
