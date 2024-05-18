@@ -15,7 +15,7 @@
                                 <a href="{{route('product.details', $product->id)}}" class="option1">
                                     Details
                                 </a>
-                                <a href="{{route('buy')}}" class="option3 btn btn-outline-primary">
+                                <a href="{{route('buy', $product->id)}}" class="option3 btn btn-outline-primary">
                                     BUY NOW
                                 </a>
                                 {{--                                <a href="{{route('addToCart')}}" class="option2">--}}
@@ -67,5 +67,8 @@
             </a>
         </div>
     </div>
+    <script>
+
+    </script>
 </section>
 <!-- end product section -->
