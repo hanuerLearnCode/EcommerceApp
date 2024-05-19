@@ -35,7 +35,6 @@
                                     </div>
                                 </form>
                             </div>
-
                         </div>
                         <div class="img-box">
                             <img src="{{$product->image[count($product->image) - 1]->path}}" alt="">

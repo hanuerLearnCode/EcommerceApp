@@ -13,6 +13,12 @@ class OrderController extends Controller
 {
     const CART_SESSION = 'CART';
 
+    public function list()
+    {
+        $order = Order::all();
+        return view('home.order.completed')->with(['order' => $order]);
+    }
+
     public function buy(string $product_id)
     {
         $product = Product::findOrFail($product_id);
@@ -57,10 +63,11 @@ class OrderController extends Controller
             DB::commit();
         } catch (\Exception $exception) {
             DB::rollBack();
-            return response()->json(['error' => $exception->getMessage()]);
+            logger($exception->getMessage());
+            return redirect()->back()->with(['error' => 'Something went wrong, please try again!']);
         }
 
-        return response()->json(['done' => "done", 'order' => $order, 'orderItem' => $orderItem]);
+        return view('home.order.completed')->with(['order' => $order]);
     }
 
     //
@@ -68,7 +75,41 @@ class OrderController extends Controller
     {
         $user = Auth::user();
         $cart = $request->session()->get(self::CART_SESSION);
-        dd($cart);
+        $totalPrice = $request['totalPrice'];
+
+        DB::beginTransaction();
+
+        try {
+
+            $order = new Order();
+            $order->user_id = $user->id;
+            $order->total_price = $totalPrice;
+            $order->save();
+
+            foreach ($cart as $cartItem) {
+                $product = $cartItem['product'][0];
+                $quantity = $cartItem['quantity'];
+
+                if ($product->quantity >= $quantity) {
+                    $product->quantity = $product->quantity - $quantity;
+                    $product->save();
+                }
+
+                $orderItem = new OrderItem();
+                $orderItem->order_id = $order->id;
+                $orderItem->product_id = $product->id;
+                $orderItem->product_quantity = $quantity;
+                $orderItem->save();
+            }
+
+            DB::commit();
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            logger($exception->getMessage());
+            return redirect()->back()->with(['error' => 'Something went wrong, please try again!']);
+        }
+
+        return view('home.order.completed')->with(['order' => $order]);
     }
 
 }

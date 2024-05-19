@@ -2,6 +2,12 @@
 @section('content')
     <div class="container mb-4">
         <h2 class="header_section">Placing your order</h2>
+        @if(session('error'))
+            <div class="alert alert-danger" role="alert">
+                {{session('error')}}
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+            </div>
+        @endif
         <div class="row">
             <div class="product-information col-md-3">
                 <div class="img-box">
@@ -38,10 +44,24 @@
                     <input type="text" class="form-control" name="product_quantity" id="product_quantity" value="1"
                            onkeyup="calculateTotal()">
                 </div>
-                <div class="form-group">
-                    <label for="total_price">Total Price</label>
-                    <input type="text" class="form-control" name="total_price" id="total_price" value="{{$product->price}}">
-                </div>
+                @if($product->sale_id != null)
+                    @php
+                        $product->price -= $product->price * \App\Models\Sale::findOrFail($product->sale_id)->percentage / 100;
+                    @endphp
+                    <div class="form-group">
+                        <label for="total_price">Total Price -
+                            Sale {{\App\Models\Sale::findOrFail($product->sale_id)->percentage}} %</label>
+                        <input type="text" class="form-control" name="total_price" id="total_price"
+                               value="{{$product->price}}" min="{{$product->price}}">
+                    </div>
+                @else
+                    <div class="form-group">
+                        <label for="total_price">Total Price</label>
+                        <input type="text" class="form-control" name="total_price" id="total_price"
+                               value="{{$product->price}}">
+                    </div>
+                @endif
+
                 <button type="submit" class="btn btn-primary">Checkout</button>
                 <button class="btn btn-outline-secondary"><a href="{{route('home.redirect')}}">Cancel</a></button>
             </form>
@@ -50,7 +70,7 @@
 
     <script>
         function calculateTotal() {
-            let product_price = document.getElementById('product_price').value;
+            let product_price = document.getElementById('total_price').min;
             let product_quantity = document.getElementById('product_quantity').value;
             document.getElementById('total_price').value = product_price * product_quantity;
         }
