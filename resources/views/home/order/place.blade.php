@@ -70,7 +70,7 @@
 
     <script>
         function calculateTotal() {
-            let product_price = document.getElementById('total_price').min;
+            let product_price = document.getElementById('product_price').value;
             let product_quantity = document.getElementById('product_quantity').value;
             document.getElementById('total_price').value = product_price * product_quantity;
         }

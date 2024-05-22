@@ -62,13 +62,14 @@ class OrderController extends Controller
             $orderItem->save();
 
             DB::commit();
+            $orders = Order::all();
         } catch (\Exception $exception) {
             DB::rollBack();
             logger($exception->getMessage());
             return redirect()->back()->with(['error' => 'Something went wrong, please try again!']);
         }
 
-        return view('home.order.completed')->with(['order' => $order]);
+        return view('home.order.completed')->with(['order' => $order, 'orders' => $orders]);
     }
 
     //
@@ -104,13 +105,14 @@ class OrderController extends Controller
             }
 
             DB::commit();
+            $orders = Order::all();
         } catch (\Exception $exception) {
             DB::rollBack();
             logger($exception->getMessage());
             return redirect()->back()->with(['error' => 'Something went wrong, please try again!']);
         }
 
-        return view('home.order.completed')->with(['order' => $order]);
+        return view('home.order.completed')->with(['order' => $order, 'orders' => $orders]);
     }
 
 }
