@@ -2,7 +2,6 @@
 
 #### An e-commerce platform 
 
-- Resembles Shopee, Lazada or Tiki
 - Created using PHP 8, Laravel 9 and Mysql
 - Provides an online market for users to buy and sell their products.
 
