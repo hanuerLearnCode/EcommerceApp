@@ -15,8 +15,9 @@ class OrderController extends Controller
 
     public function list()
     {
-        $order = Order::all();
-        return view('home.order.completed')->with(['order' => $order]);
+        $user = Auth::user();
+        $orders = $user->orders;
+        return view('home.order.completed')->with(['orders' => $orders]);
     }
 
     public function buy(string $product_id)
