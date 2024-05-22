@@ -143,4 +143,10 @@ class ProductController extends Controller implements iCRUD
             'sale' => $sale,
         ]);
     }
+
+    public function showAllProducts()
+    {
+        $products = Product::all();
+        return view('home.products')->with(['products' => $products]);
+    }
 }
