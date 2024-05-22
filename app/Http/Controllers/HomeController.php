@@ -13,7 +13,7 @@ class HomeController extends Controller
     public function index()
     {
         //
-        $products = Product::all();
+        $products = Product::paginate(3);
         return view('home.index')->with([
             'products' => $products,
         ]);
@@ -27,7 +27,7 @@ class HomeController extends Controller
             return route('login');
         }
         $usertype = Auth::user()->usertype;
-        $products = Product::all();
+        $products = Product::paginate(3);
         if ($usertype == 1) {
             return view('admin.home');
         } else

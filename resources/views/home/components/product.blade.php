@@ -60,6 +60,9 @@
                 </div>
             @endforeach
         </div>
+        <div class="paginator mt-4" style="display: flex; align-items: center; justify-content: center">
+            {{$products->onEachSide(1)->links()}}
+        </div>
         <div class="btn-box">
             <a href="">
                 View All products
