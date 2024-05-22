@@ -64,7 +64,7 @@
             {{$products->onEachSide(1)->links()}}
         </div>
         <div class="btn-box">
-            <a href="">
+            <a href="{{route('products.all')}}">
                 View All products
             </a>
         </div>
