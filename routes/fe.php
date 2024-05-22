@@ -20,3 +20,10 @@ Route::prefix('/checkout')->middleware('auth')->group(function () {
     Route::get('/increase/{id}', [\App\Http\Controllers\CartController::class, 'increase'])->name('cart.increase');
     Route::get('/decrease/{id}', [\App\Http\Controllers\CartController::class, 'decrease'])->name('cart.decrease');
 });
+
+// sending emails
+Route::prefix('/mail')->middleware('auth')->group(function () {
+
+//    Route::get('/send-mail', )
+
+});
