@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Sale;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use function PHPUnit\Framework\isEmpty;
 
 class ProductController extends Controller implements iCRUD
@@ -121,6 +122,9 @@ class ProductController extends Controller implements iCRUD
         try {
             DB::beginTransaction();
             $product = Product::find($id);
+            $image = $product->image;
+            Storage::delete($image[0]['path']); // not working
+            $image[0]->delete();
             $product->delete();
             DB::commit();
         } catch (\Exception $e) {
